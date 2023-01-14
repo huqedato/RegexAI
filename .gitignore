@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 node_modules
+.vscode
+*.code-workspace
+*.sh
+*.bat
+
