@@ -22,7 +22,7 @@
   <div id="key" @click="activeModal = true">API Key</div>
   <div>
     <a href="https://github.com/huqedato/RegexAI" target="_blank" rel="noopener noreferrer">
-      <img class="logo" src="./assets/logo3.png" alt="logo" title="RegexAi on Github"/>
+      <img class="logo" src="./assets/logo3.png" alt="logo" title="RegexAi on Github" />
     </a>
   </div>
   <Header first="Regex" last="Ai" />
@@ -37,15 +37,16 @@
         :placeholder="placeholder"></textarea>
     </div>
     <div class="result card" v-show="resActive" :class="{ resultWaiting: textareaDisabled }">
-      <div><pre>{{ result }}</pre></div>
+      <div>
+        <pre>{{ result }}</pre>
+      </div>
       <button class="arrow" @click="copyResToTextArea">⟲</button>
     </div>
   </div>
-
 </template>
 
 <script >
-const languages = ["Ada", "Awk", "Bash", "C", "C#", "C++", "D", "Elixir", "Erlang", "F#", "Go", "Haskell", "Io", "Java", "JavaScript", "Julia", "Kotlin", "Lisp", "Lua", "Nim", "OCaml", "Objective-C", "Pascal", "Perl", "PHP", "PowerShell", "Prolog", "Python", "R", "Ruby", "Rust", "Scratch", "Smalltalk", "Swift", "Tcl", "Zig"];
+const languages = ["Ada", "AWK", "Bash", "C", "C#", "C++", "Clojure", "COBOL", "Crystal", "D", "Dart", "Delphi", "Elixir", "Elm", "Erlang", "F#", "Go", "Groovy", "Haskell", "Io", "Java", "JavaScript", "Julia", "Kotlin", "Lisp", "Lua", "Matlab", "Nim", "OCaml", "Objective-C", "Pascal", "Perl", "PHP", "PowerShell", "Prolog", "Python", "R", "Ruby", "Rust", "Sed", "Scala", "Scheme", "Scratch", "Smalltalk", "Swift", "Tcl", "Vimscript", "Visual Basic", "Zig"];
 
 import KeyModal from "./components/key.vue";
 import Header from "./components/Header.vue";

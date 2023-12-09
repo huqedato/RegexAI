@@ -25,9 +25,7 @@ async function OpenAIApiCall(key, params) {
     const messages = [{ "role": "system", "content": "You are a helpful expert in Regular expressions. You you deliver straight, direct, no-nonsense replies, without introduction." },
     { "role": "user", "content": prompt }]
     const newParams = { messages: messages, model: model, ...DEFAULT_PARAMS }
-    //console.log(newParams)
     const completion = await openai.chat.completions.create(newParams);
-   // console.log(completion.choices[0].message.content);
     return completion.choices[0].message.content;
 }
 
