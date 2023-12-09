@@ -181,12 +181,20 @@ button:active {
 }
 
 .result {
+  border:#111 solid 0.6px;
+  padding: 1em;
+  margin-top: 1em;
   text-align: justify;
   font-family: 'Courier New', Courier, monospace;
   grid-column: 1 / 4;
   grid-row: 3 / 5;
   color: @green;
-  font-size: 1.1em;
+  font-size: 1.1em; 
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .resultWaiting {
@@ -339,4 +347,13 @@ option:checked {
   cursor: pointer;
   width: fit-content;
   font-size: 1em;
+}
+
+.logo {
+  height: 2.5em !important;
+}
+
+.logo:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 0.2em #646cffaa) !important;
 }

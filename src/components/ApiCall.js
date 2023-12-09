@@ -1,47 +1,43 @@
-import { Configuration, OpenAIApi } from "openai";
-const types = ["Generate a Regular Expression to ", ["Create a code in ", " to match a variable str against this regular expression: "], "Explain the following Regular expression: "]
+import OpenAI from "openai";
+const types = ["Generate a Regular Expression for this pattern: ", ["Create a code in ", " to match a variable str against this regular expression: "], "Explain the following Regular expression: "]
 const DEFAULT_PARAMS = {
-    "model": "text-davinci-002",
-    "temperature": 0,
-    "max_tokens": 256,
-    "top_p": 1,
-    "frequency_penalty": 0,
-    "presence_penalty": 0,
-    "prompt": "How are you today?",
-}
-
-//const openai_api_key = "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"
-
-
-async function OpenAIApiCall(key, params = {}) {
-    const params_ = { ...DEFAULT_PARAMS, ...params };
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + String(key)
-        },
-        body: JSON.stringify(params_)
-    };
-    const response = await fetch('https://api.openai.com/v1/completions', requestOptions);
-    const data = await response.json();
-    return data.choices[0].text.replaceAll('\n', '<br/ > ');;
+    "temperature": 0.2,
+    "max_tokens": 512,
 }
 
 
-export async function ApiCall(type, key, query, lang = null, model = 'code-davinci-002') {
+
+
+export async function RegexAiApiCall(type, key, query, lang = null, model = 'gpt-3.5-turbo') {
     const trimQuery = query.trim()
     const AIquery = type === 1 ? types[1][0] + lang + types[1][1] + trimQuery : types[type] + trimQuery
     const response = await OpenAIApiCall(key, { "prompt": AIquery, "model": model })
     return response
 }
 
+async function OpenAIApiCall(key, params) {
+    const configuration = {
+        apiKey: key,
+        dangerouslyAllowBrowser: true
+    };
+    const { prompt, model } = params;
+    const openai = new OpenAI(configuration);
+    const messages = [{ "role": "system", "content": "You are a helpful expert in Regular expressions. You you deliver straight, direct, no-nonsense replies, without introduction." },
+    { "role": "user", "content": prompt }]
+    const newParams = { messages: messages, model: model, ...DEFAULT_PARAMS }
+    //console.log(newParams)
+    const completion = await openai.chat.completions.create(newParams);
+   // console.log(completion.choices[0].message.content);
+    return completion.choices[0].message.content;
+}
 
 export async function AvailableModels(key) {
-    const configuration = new Configuration({
+    const configuration = {
         apiKey: key,
-    });
-    const openai = new OpenAIApi(configuration);
-    const response = await openai.listModels();
-    return response.data;
+        dangerouslyAllowBrowser: true
+    };
+    const openai = new OpenAI(configuration);
+
+    const response = await openai.models.list();
+    return response.data.filter(model => model.id.includes('gpt'));
 }

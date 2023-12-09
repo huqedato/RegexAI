@@ -2,5 +2,6 @@
 
 
 Regular expressions on steroids, using OpenAI GPT. 
+Your API key is stored in your browser local storage.
 
-See my humble app in action on <a href="https://huqedato.github.io/RegexAI/">https://huqedato.github.io/RegexAI</a>
+See RegexAI in action on <a href="https://huqedato.github.io/RegexAI/">https://huqedato.github.io/RegexAI</a>

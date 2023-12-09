@@ -19,7 +19,12 @@
       </select>
     </span>
   </div>
-  <div id="key" @click="activeModal = true">Key</div>
+  <div id="key" @click="activeModal = true">API Key</div>
+  <div>
+    <a href="https://github.com/huqedato/RegexAI" target="_blank" rel="noopener noreferrer">
+      <img class="logo" src="./assets/logo3.png" alt="logo" title="RegexAi on Github"/>
+    </a>
+  </div>
   <Header first="Regex" last="Ai" />
 
   <div class="container">
@@ -32,7 +37,7 @@
         :placeholder="placeholder"></textarea>
     </div>
     <div class="result card" v-show="resActive" :class="{ resultWaiting: textareaDisabled }">
-      <div v-html="result"></div>
+      <div><pre>{{ result }}</pre></div>
       <button class="arrow" @click="copyResToTextArea">⟲</button>
     </div>
   </div>
@@ -55,7 +60,7 @@ export default {
       languages: languages,
       textareaDisabled: false,
       GPTmodels: null,
-      chosenModel: "text-davinci-002",
+      chosenModel: "gpt-3.5-turbo",
       placeholder: "Enter your text here",
       activeModal: false
     };
@@ -71,7 +76,7 @@ export default {
       this.resActive = true;
       this.textareaDisabled = true;
       this.result = "AI thinking...";
-      await API.ApiCall(type, window.localStorage.getItem("OpenAIKey"), this.queryArea, this.language, this.chosenModel).then((res) => {
+      await API.RegexAiApiCall(type, window.localStorage.getItem("OpenAIKey"), this.queryArea, this.language, this.chosenModel).then((res) => {
         this.result = res;
         this.textareaDisabled = false;
       });
@@ -82,7 +87,7 @@ export default {
     },
     mouseover: function (type) {
       if (type == 0) {
-        this.placeholder = "Generate a Regular Expression to... ";
+        this.placeholder = "Provide the description or pattern you want me to create a regular expression for:";
       } else if (type == 1) {
         this.placeholder = "Create a code in " + this.language + " to match a variable str against this regular expression: ";
       } else if (type == 2) {
@@ -96,7 +101,7 @@ export default {
     }
     this.language = "JavaScript";
     API.AvailableModels(window.localStorage.getItem("OpenAIKey")).then((res) => {
-      this.GPTmodels = res.data.map((x) => x.id);
+      this.GPTmodels = res.map((x) => x.id);
     });
   }
 };
