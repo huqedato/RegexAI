@@ -60,14 +60,11 @@ h1 {
 button {
   background-color: #1a1a1a;
   border: 1px solid transparent;
-
-  // border-radius: 8px;
   cursor: pointer;
   font-family: inherit;
   font-size: 1.1em;
   font-weight: 500;
   padding: 0.6em 1.2em;
-  //transition: border-color 0.25s;
 }
 
 button:hover {
@@ -84,9 +81,7 @@ button:active {
 }
 
 
-.card {
-  // padding: 1em;
-}
+.card {}
 
 #app {
   max-width: 80vw;
@@ -95,7 +90,6 @@ button:active {
   padding: 2rem;
   text-align: center;
 }
-
 
 
 .container {
@@ -114,7 +108,6 @@ button:active {
   color: @pale-white;
   background-color: @bkg-lite;
   grid-column: 1 / 2;
-  /* spans the first column */
   grid-row: 1 / 2;
 
   box-sizing: border-box;
@@ -122,33 +115,26 @@ button:active {
 
 .item1 {
   grid-column: 1 / 2;
-  /* spans the first column */
   grid-row: 2 / 3;
 
 }
 
 .item2 {
   grid-column: 3 / 4;
-  /* spans the second column */
   grid-row: 2 / 3;
 
 }
 
 .item3 {
   grid-column: 2 / 3;
-
   grid-row: 2 / 3;
-
 }
 
 .item4 {
   grid-column: 1 / 4;
-  /* spans the first 3 columns */
   grid-row: 1 / 2;
   padding: none;
   margin: none;
-  /* spans the second row */
-
 }
 
 .item4 textarea {
@@ -181,7 +167,7 @@ button:active {
 }
 
 .result {
-  border:#111 solid 0.6px;
+  border: #111 solid 0.6px;
   padding: 1em;
   margin-top: 1em;
   text-align: justify;
@@ -189,7 +175,7 @@ button:active {
   grid-column: 1 / 4;
   grid-row: 3 / 5;
   color: @green;
-  font-size: 1.1em; 
+  font-size: 1.1em;
 }
 
 pre {
@@ -242,9 +228,7 @@ select {
   outline: none !important;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 option {
