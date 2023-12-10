@@ -28,8 +28,7 @@
   <Header first="Regex" last="Ai" />
 
   <div class="container">
-    <button class="item1" @click="ApiCall(0)" v-on:mouseover="mouseover(0)">Create
-      Regexp</button>
+    <button class="item1" @click="ApiCall(0)" v-on:mouseover="mouseover(0)">Create Regexp</button>
     <button class="item3" @click="ApiCall(2)" v-on:mouseover="mouseover(2)">Explain Regexp</button>
     <button class="item2" @click="ApiCall(1)" v-on:mouseover="mouseover(1)">Use Regexp in {{ language }}</button>
     <div class="item4">
@@ -40,7 +39,7 @@
       <div>
         <pre>{{ result }}</pre>
       </div>
-      <button class="arrow" @click="copyResToTextArea">⟲</button>
+      <button class="swaptoggle" @click="copyResToTextArea" title="copy to input area">⇄</button>
     </div>
   </div>
 </template>
